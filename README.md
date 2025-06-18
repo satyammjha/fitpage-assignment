@@ -1,16 +1,17 @@
 # **Fitpage Assignment – Product Rating & Review App**
 
-**Build a full-stack web application that allows users to submit ratings and reviews on products.**
+**A full-stack web application that allows users to submit ratings and reviews on products with images, and see live aggregated results.**
 
 ---
 
 ## **📝 Features**
 
-* Submit **ratings**, **reviews**, or both.
-* View **average rating** and **total reviews** per product.
-* Upload **photos** in reviews.
-* Prevent **duplicate reviews** by using the user’s **IP address**.
-* Real-time UI updates for new reviews and stats.
+* Submit **ratings**, **reviews**, or both
+* View **average rating** and **total reviews**
+* Upload **photos** in reviews
+* Prevent **duplicate reviews** using the user’s **IP address**
+* Real-time UI updates on the frontend
+* Basic **health check** route for uptime monitoring
 
 ---
 
@@ -18,7 +19,7 @@
 
 * 🔗 **Frontend**: [https://uifitpage.satyamjha.me](https://uifitpage.satyamjha.me)
 * 🔗 **Backend**: [https://apifitpage.satyamjha.me](https://apifitpage.satyamjha.me)
-* 🚀 **Backend Hosting**: EC2 (with NGINX reverse proxy)
+* 🚀 **Backend Hosting**: AWS EC2 (with NGINX reverse proxy)
 * ⚡ **Frontend Hosting**: Vercel
 
 ---
@@ -44,7 +45,7 @@ client/
 server/
 ├── routes/ → review.routes.js, user.routes.js
 ├── controller/ → review.controller.js, user.controller.js
-├── utils/ → fileUploader.js (uploads photos to Supabase)
+├── utils/ → fileUploader.js (handles Supabase image uploads)
 ├── prisma/ → schema.prisma, prismaClient.js
 └── server.js
 ```
@@ -55,9 +56,13 @@ server/
 
 **Base URL**: `https://apifitpage.satyamjha.me`
 
-* `POST /api/review` → Submit rating/review/photo
-  *(IP address auto-tracked to avoid duplicate entries per product)*
-* `GET /user/getuser` → Get user by username
+| Method | Endpoint        | Description                                        |
+| ------ | --------------- | -------------------------------------------------- |
+| POST   | `/api/review`   | Submit a rating, review, and optional image        |
+| GET    | `/user/getuser` | Fetch user by IP                                   |
+| GET    | `/health`       | Health check route for monitoring (returns 200 OK) |
+
+> ⚠️ Duplicate reviews by the same user on the same product are blocked using IP address logging.
 
 ---
 
@@ -67,7 +72,7 @@ server/
 * **Backend**: Express.js, Prisma
 * **Database**: PostgreSQL (via **Supabase**)
 * **Media Storage**: Supabase Buckets
-* **Hosting**: Vercel (frontend), AWS EC2 (backend)
+* **Hosting**: Vercel (frontend), AWS EC2 + NGINX (backend)
 
 ---
 
@@ -89,16 +94,16 @@ cd server
 npm install
 ```
 
-Create a `.env` file:
+Create a `.env` file inside `/server`:
 
 ```env
 PORT=5000
 DATABASE_URL=your_postgres_connection_string
 SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_URL=your_supabase_project_url
+SUPABASE_URL=https://your_project.supabase.co
 ```
 
-Then:
+Then run:
 
 ```bash
 npx prisma db push
@@ -119,11 +124,18 @@ npm run dev
 
 ## **📄 .env.example**
 
-Place this in `/server/.env.example` for sharing:
-
 ```env
 PORT=5000
 DATABASE_URL=postgresql://<user>:<password>@<host>:5432/<db>
 SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_URL=https://<project>.supabase.co
 ```
+
+---
+
+## **📬 Contact**
+
+* **Email**: [satyammjha0@gmail.com](mailto:satyammjha0@gmail.com)
+* **LinkedIn**: [linkedin.com/in/satyammjha](https://linkedin.com/in/satyammjha)
+
+---

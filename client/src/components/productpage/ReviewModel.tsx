@@ -11,6 +11,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import StarRating from "./StarRating";
 import { submitReviewToServer } from "@/lib/api";
+import { toast } from 'sonner';
 
 type ReviewFormData = {
     name: string;
@@ -91,7 +92,7 @@ const ReviewModal = ({ isOpen, onClose, product, onSubmit, existingReview, user 
 
             const imageUrl = res?.imageUrl || previewUrl;
 
-            alert("✅ Review submitted!");
+            toast.success("✅ Review submitted!");
 
             onSubmit(product.id, {
                 name: formData.name,
@@ -103,7 +104,7 @@ const ReviewModal = ({ isOpen, onClose, product, onSubmit, existingReview, user 
             onClose();
         } catch (err) {
             console.error("❌ Error:", err);
-            alert("❌ Something went wrong");
+            toast.error("❌ Something went wrong");
         } finally {
             setLoading(false);
         }
