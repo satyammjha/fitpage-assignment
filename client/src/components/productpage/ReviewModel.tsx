@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import StarRating from "./StarRating";
-import { submitReviewToServer } from "@/lib/api";
+import { submitReviewToServer } from "../../lib/api";
 import { toast } from 'sonner';
 
 type ReviewFormData = {

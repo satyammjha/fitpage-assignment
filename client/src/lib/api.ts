@@ -21,7 +21,7 @@ export async function submitReviewToServer({
     if (review) formData.append("review", review);
     if (imageFile) formData.append("image", imageFile);
 
-    const res = await axios.post("http://localhost:5000/api/review", formData, {
+    const res = await axios.post("https://apifitpage.satyamjha.me/api/review", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -37,7 +37,7 @@ export async function submitReviewToServer({
 
 export async function getUserByIp() {
   try {
-    const res = await fetch("http://localhost:5000/user/getuser", {
+    const res = await fetch("https://apifitpage.satyamjha.me/user/getuser", {
       method: "GET",
     });
 

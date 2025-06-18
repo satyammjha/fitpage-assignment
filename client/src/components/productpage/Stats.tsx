@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useUser } from "@/providers/user-provider";
+import { useUser } from "../../providers/user-provider";
 import { productsData } from "../../constants/data";
 import { toast } from "sonner";
 import StepsModal from "./StepsModal";

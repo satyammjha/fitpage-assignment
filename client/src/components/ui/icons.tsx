@@ -30,7 +30,6 @@ import {
   UserX2Icon,
   X,
   HomeIcon,
-  Home
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
