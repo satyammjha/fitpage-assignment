@@ -17,7 +17,7 @@
 
 ## **🌐 Hosted URLs**
 
-* 🔗 **Frontend**: [https://uifitpage.satyamjha.me](https://uifitpage.satyamjha.me)
+* 🔗 **Frontend**: [https://uifitpage.satyamjha.me](https://fitpageui.satyamjha.me/)
 * 🔗 **Backend**: [https://apifitpage.satyamjha.me](https://apifitpage.satyamjha.me)
 * 🚀 **Backend Hosting**: AWS EC2 (with NGINX reverse proxy)
 * ⚡ **Frontend Hosting**: Vercel
